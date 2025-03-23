@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل مسار الرحلة</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            direction: rtl; /* اتجاه النص من اليمين لليسار */
+        }
+        .data {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #e74c3c; /* اللون الأحمر */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #e74c3c; /* اللون الأحمر */
+            margin-top: 30px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 5px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 أعمدة */
+            gap: 20px; /* المسافة بين العناصر */
+            margin-top: 20px;
+        }
+        .field {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #e74c3c; /* اللون الأحمر */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .field strong {
+            color: #e74c3c; /* اللون الأحمر */
+        }
+        .activity-list {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 أعمدة */
+            gap: 20px; /* المسافة بين العناصر */
+        }
+        .activity-list li {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 5px solid #e74c3c; /* اللون الأحمر */
+            border-radius: 5px;
+            font-size: 1.1em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .special-requests {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #e74c3c; /* اللون الأحمر */
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #e74c3c; /* اللون الأحمر */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #c0392b; /* لون أحمر داكن */
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .header-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header-image img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="data">
+        <!-- صورة الرأس -->
+        <div class="header-image">
+            <img src="https://images.pexels.com/photos/1089306/pexels-photo-1089306.jpeg?auto=compress&cs=tinysrgb&w=600" alt="صورة مسار الرحلة">
+        </div>
+
+        <h1>تفاصيل مسار الرحلة</h1>
+
+        <!-- معلومات المسافر -->
+        <h2>معلومات المسافر</h2>
+        <div class="grid-container">
+            <div class="field">
+                <p><strong>الاسم:</strong> {{ data.passenger_name }}</p>
+            </div>
+            <div class="field">
+                <p><strong>البريد الإلكتروني:</strong> {{ data.passenger_email }}</p>
+            </div>
+            <div class="field">
+                <p><strong>رقم الجواز:</strong> {{ data.passport_number }}</p>
+            </div>
+            <div class="field">
+                <p><strong>تاريخ الميلاد:</strong> {{ data.date_of_birth }}</p>
+            </div>
+            <div class="field">
+                <p><strong>الجنس:</strong> {{ data.get_gender_display }}</p>
+            </div>
+        </div>
+
+        <!-- معلومات الرحلة -->
+        <h2>معلومات الرحلة</h2>
+        <div class="grid-container">
+            <div class="field">
+                <p><strong>رقم الرحلة:</strong> {{ data.flight_number }}</p>
+            </div>
+            <div class="field">
+                <p><strong>مدينة المغادرة:</strong> {{ data.departure_city }}</p>
+            </div>
+            <div class="field">
+                <p><strong>مدينة الوصول:</strong> {{ data.arrival_city }}</p>
+            </div>
+            <div class="field">
+                <p><strong>تاريخ المغادرة:</strong> {{ data.departure_date }}</p>
+            </div>
+            <div class="field">
+                <p><strong>تاريخ الوصول:</strong> {{ data.arrival_date }}</p>
+            </div>
+            <div class="field">
+                <p><strong>الخطوط الجوية:</strong> {{ data.airline }}</p>
+            </div>
+            <div class="field">
+                <p><strong>تفضيل المقعد:</strong> {{ data.get_seat_preference_display }}</p>
+            </div>
+            <div class="field">
+                <p><strong>فئة السفر:</strong> {{ data.get_travel_class_display }}</p>
+            </div>
+        </div>
+
+        <!-- الأنشطة اليومية -->
+        <h2>الأنشطة اليومية</h2>
+        <ul class="activity-list">
+            <li><strong>اليوم الأول:</strong> {{ data.day_1_activity }}</li>
+            <li><strong>اليوم الثاني:</strong> {{ data.day_2_activity }}</li>
+            <li><strong>اليوم الثالث:</strong> {{ data.day_3_activity }}</li>
+            <li><strong>اليوم الرابع:</strong> {{ data.day_4_activity }}</li>
+            <li><strong>اليوم الخامس:</strong> {{ data.day_5_activity }}</li>
+            <li><strong>اليوم السادس:</strong> {{ data.day_6_activity }}</li>
+            <li><strong>اليوم السابع:</strong> {{ data.day_7_activity }}</li>
+        </ul>
+
+        <!-- الطلبات الخاصة -->
+        <h2>الطلبات الخاصة</h2>
+        <div class="special-requests">
+            <p>{{ data.special_requests }}</p>
+        </div>
+
+        <!-- تنزيل كملف PDF -->
+        <div style="text-align: center;">
+            <a href="{% url 'download_pdf' %}">تنزيل كملف PDF</a>
+        </div>
+
+        <!-- تذييل الصفحة -->
+        <div class="footer">
+            <p>&copy; 2025 تنظيم. جميع الحقوق محفوظة.</p>
+        </div>
+    </div>
+</body>
+</html>
