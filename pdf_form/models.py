@@ -3,6 +3,7 @@ from django.db import models
 class FlightItinerary(models.Model):
     trip_id = models.CharField(max_length=50, primary_key=True, verbose_name="رمز الرحلة")
     flight_number = models.CharField(max_length=20, verbose_name="رقم الرحلة")
+    Passport_Number = models.CharField(max_length=20, verbose_name="رقم الجواز")
     departure_city = models.CharField(max_length=100, verbose_name="مدينة المغادرة")
     arrival_city = models.CharField(max_length=100, verbose_name="مدينة الوصول")
     departure_date = models.DateField(verbose_name="تاريخ المغادرة")
@@ -14,9 +15,9 @@ class FlightItinerary(models.Model):
             ('window', 'مقعد نافذة'),
             ('aisle', 'مقعد ممر'),              
             ('middle', 'مقعد وسط'),         
-        ],          
+        ],      
         verbose_name="تفضيل المقعد"
-    )           
+    )
     travel_class = models.CharField(
         max_length=50,
         choices=[

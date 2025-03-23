@@ -121,18 +121,18 @@
             <div class="field">
                 <p><strong>الاسم:</strong> {{ data.passenger_name }}</p>
             </div>
-            <div class="field">
+            {% comment %} <div class="field">
                 <p><strong>البريد الإلكتروني:</strong> {{ data.passenger_email }}</p>
-            </div>
+            </div> {% endcomment %}
             <div class="field">
-                <p><strong>رقم الجواز:</strong> {{ data.passport_number }}</p>
+                <p><strong>رقم الجواز:</strong> {{ data.Passport_Number }}</p>
             </div>
-            <div class="field">
+            {% comment %} <div class="field">
                 <p><strong>تاريخ الميلاد:</strong> {{ data.date_of_birth }}</p>
-            </div>
+            </div> {% endcomment %}
             <div class="field">
-                <p><strong>الجنس:</strong> {{ data.get_gender_display }}</p>
-            </div>
+                <p><strong>الجنس:</strong> {{ data.passenger_gender }}</p>
+            </div> 
         </div>
 
         <!-- معلومات الرحلة -->
@@ -194,3 +194,4 @@
     </div>
 </body>
 </html>
+
